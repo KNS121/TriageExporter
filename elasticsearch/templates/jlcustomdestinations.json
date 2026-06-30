@@ -1,0 +1,41 @@
+{
+  "index_patterns": ["triage-jlcustomdestinations"],
+  "template": {
+    "mappings": {
+      "properties": {
+        "ModuleName": { "type": "keyword" },
+        "TimeLine":   { "type": "date" },
+        "Path": { "type": "keyword" },
+        "UserName": { "type": "keyword" },
+        "SourceFile": { "type": "keyword" },
+        
+        "LnkEntity.Header.Magic": { "type": "integer" },
+        "LnkEntity.Header.TargetFileSize": { "type": "long" },
+        "LnkEntity.Header.IconIndex": { "type": "integer" },
+        "LnkEntity.Header.ShowCommand": { "type": "keyword" },
+        "LnkEntity.Header.HotKey": { "type": "keyword" },
+        "LnkEntity.Header.CreationTime": { "type": "date" },
+        "LnkEntity.Header.AccessTime": { "type": "date" },
+        "LnkEntity.Header.WriteTime": { "type": "date" },
+        
+        "LnkEntity.Header.LinkFlags.AllowLinkToLink": { "type": "boolean" },
+        "LnkEntity.Header.LinkFlags.DisableKnownFolderTracking": { "type": "boolean" },
+        "LnkEntity.Header.LinkFlags.HasLinkTargetIDList": { "type": "boolean" },
+        "LnkEntity.Header.LinkFlags.IsUnicode": { "type": "boolean" },
+        
+        "LnkEntity.LinkInfo.LocalBasePath": { "type": "keyword" },
+        "LnkEntity.LinkInfo.LocalBasePathUnicode": { "type": "keyword" },
+        "LnkEntity.LinkInfo.CommonPathSuffix": { "type": "keyword" },
+        "LnkEntity.LinkInfo.VolID.VolumeLabel": { "type": "keyword" },
+        "LnkEntity.LinkInfo.VolID.DriveType": { "type": "keyword" },
+        "LnkEntity.LinkInfo.VolID.DriveSerialNumber": { "type": "keyword" },
+        
+        "LnkEntity.StringData.NameString": { "type": "keyword" },
+        "LnkEntity.StringData.RelativePath": { "type": "keyword" },
+        "LnkEntity.StringData.WorkingDir": { "type": "keyword" },
+        "LnkEntity.StringData.CommandLineArguments": { "type": "text" },
+        "LnkEntity.StringData.IconLocation": { "type": "keyword" }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "index_patterns": ["triage-prefetch"],
+  "template": {
+    "settings": {
+      "analysis": {
+        "normalizer": {
+          "lowercase_normalizer": {
+            "type": "custom",
+            "filter": ["lowercase"]
+          }
+        }
+      }
+    },
+    "mappings": {
+      "properties": {
+        "ModuleName": { "type": "keyword" },
+        "TimeLine": { "type": "date" },
+        "Modified": { "type": "date" },
+        "FileName": { 
+          "type": "keyword",
+          "normalizer": "lowercase_normalizer" 
+        },
+        "Executable": { 
+          "type": "keyword",
+          "normalizer": "lowercase_normalizer" 
+        },
+        "FileSize": { "type": "integer" },
+        "Hash": { "type": "long" },
+        "StringHash": { "type": "keyword" },
+        "Version": { "type": "keyword" },
+        "RunCount": { "type": "integer" },
+        "SourceFile": { 
+          "type": "keyword",
+          "normalizer": "lowercase_normalizer" 
+        },
+        "LastRunTimes": { "type": "date" },
+        "FilesAccessed": { 
+          "type": "keyword",
+          "normalizer": "lowercase_normalizer" 
+        }
+      }
+    }
+  }
+}

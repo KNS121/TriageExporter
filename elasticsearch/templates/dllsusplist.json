@@ -1,0 +1,18 @@
+{
+  "index_patterns": ["triage-dllsusplist"],
+  "priority": 100,
+  "template": {
+    "mappings": {
+      "properties": {
+        "ModuleName": { "type": "keyword" },
+        "TimeLine":   { "type": "date" },
+        "Name":       { "type": "keyword" },
+        "ProcPath":   { "type": "keyword" },
+        "PID":        { "type": "integer" },
+        "SourceFile": { "type": "keyword" },
+        "NotSignedDLLs": { "type": "flattened" },
+        "UnusualPath":   { "type": "flattened" }
+      }
+    }
+  }
+}

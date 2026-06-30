@@ -1,0 +1,32 @@
+{
+  "index_patterns": ["triage-jlautomaticdestinations"],
+  "template": {
+    "mappings": {
+      "properties": {
+        "ModuleName": { "type": "keyword" },
+        "TimeLine":   { "type": "date" },
+        "EntryString": { "type": "keyword" },
+        "LastAccessTime": { "type": "date" },
+        "NetBIOSVolumeName": { "type": "keyword" },
+        "Pinned": { "type": "boolean" },
+        "EntryNumber": { "type": "integer" },
+        "UserName": { "type": "keyword" },
+        "Path": { "type": "keyword" },
+        "Type": { "type": "keyword" },
+        "SourceFile": { "type": "keyword" },
+        
+        "LnkEntity.Header.TargetFileSize": { "type": "long" },
+        "LnkEntity.Header.ShowCommand": { "type": "keyword" },
+        "LnkEntity.Header.HotKey": { "type": "keyword" },
+        "LnkEntity.Header.CreationTime": { "type": "date" },
+        "LnkEntity.Header.AccessTime": { "type": "date" },
+        "LnkEntity.Header.WriteTime": { "type": "date" },
+        
+        "LnkEntity.LinkInfo.LocalBasePath": { "type": "keyword" },
+        "LnkEntity.LinkInfo.VolID.VolumeLabel": { "type": "keyword" },
+        "LnkEntity.LinkInfo.VolID.DriveType": { "type": "keyword" },
+        "LnkEntity.LinkInfo.VolID.DriveSerialNumber": { "type": "keyword" }
+      }
+    }
+  }
+}

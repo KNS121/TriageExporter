@@ -108,5 +108,6 @@ func main() {
 	fmt.Println(strings.Repeat("=", 80))
 	fmt.Printf("TOTAL: processed=%d indexed=%d parse_errors=%d index_errors=%d\n",
 		totalProcessed, totalIndexed, totalParseErrors, totalErrors)
-	fmt.Println("READY FOR NEXT STEP")
+	fmt.Println(strings.Repeat("=", 80))
+	fmt.Println("Finished...")
 }
