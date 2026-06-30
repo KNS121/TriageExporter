@@ -1,6 +1,7 @@
 package main
 
 import (
+	"TriageExporter/parser"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -45,6 +46,21 @@ func main() {
 		info, err := os.Stat(f)
 		if err == nil {
 			fmt.Printf(" %d. %s (size: %d bytes)\n", i+1, f, info.Size())
+		}
+	}
+
+	fmt.Println(strings.Repeat("-", 80))
+
+	for _, f := range files {
+		fmt.Println("processing:", f)
+
+		err := parser.ReadJSON(f, func(line []byte) error {
+			//fmt.Println(string(line))
+			return nil
+		})
+
+		if err != nil {
+			fmt.Println("error reading file:", f, err)
 		}
 	}
 
