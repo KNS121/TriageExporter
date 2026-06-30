@@ -31,7 +31,7 @@ func readHostname(reader *bufio.Reader) string {
 		hostname := readLine(reader, "Enter hostname: ")
 
 		if hostname == "" {
-			fmt.Println("Hostname cannot be empty.\n")
+			fmt.Println("Hostname cannot be empty.")
 			continue
 		}
 
@@ -41,15 +41,15 @@ func readHostname(reader *bufio.Reader) string {
 
 func readPath(reader *bufio.Reader) string {
 	for {
-		path := readLine(reader, "Enter path to file/folder: ")
+		path := readLine(reader, "Enter path to triage file/folder: ")
 
 		if path == "" {
-			fmt.Println("Path cannot be empty.\n")
+			fmt.Println("Path cannot be empty.")
 			continue
 		}
 
 		if _, err := os.Stat(path); err != nil {
-			fmt.Println("Path does not exist.\n")
+			fmt.Println("Path does not exist.")
 			continue
 		}
 
