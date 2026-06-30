@@ -1,0 +1,22 @@
+{
+  "index_patterns": ["triage-dlllist"],
+  "template": {
+    "mappings": {
+      "properties": {
+        "ModuleName": { "type": "keyword" },
+        "TimeLine":   { "type": "date" },
+        "Name":       { "type": "keyword" },
+        "ProcPath":   { "type": "keyword" },
+        "PID":        { "type": "integer" },
+        "SourceFile": { "type": "keyword" },
+        "DLLList": {
+          "type": "nested",
+          "properties": {
+            "path":   { "type": "keyword" },
+            "status": { "type": "keyword" }
+          }
+        }
+      }
+    }
+  }
+}

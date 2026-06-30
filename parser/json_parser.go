@@ -2,6 +2,7 @@ package parser
 
 import (
 	"bufio"
+	"encoding/json"
 	"os"
 )
 
@@ -19,7 +20,6 @@ func ReadJSON(filePath string, handler func([]byte) error) error {
 
 	for scanner.Scan() {
 		line := scanner.Bytes()
-
 		if len(line) == 0 {
 			continue
 		}
@@ -31,4 +31,18 @@ func ReadJSON(filePath string, handler func([]byte) error) error {
 	}
 
 	return scanner.Err()
+}
+
+func Parse(line []byte, eventType string) (map[string]interface{}, error) {
+	var doc map[string]interface{}
+	err := json.Unmarshal(line, &doc)
+	if err != nil {
+		return nil, err
+	}
+
+	doc["ModuleName"] = eventType
+
+	//ApplyTransformations(doc, eventType)
+
+	return doc, nil
 }

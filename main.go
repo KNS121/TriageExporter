@@ -24,6 +24,14 @@ func main() {
 
 	client := elasticsearch.New("http://localhost:9200")
 
+	fmt.Println("Loading templates...")
+	err := client.LoadTemplates("elasticsearch/templates")
+	if err != nil {
+		fmt.Printf("Warning: failed to load templates: %v\n", err)
+	} else {
+		fmt.Println("Templates loaded successfully")
+	}
+
 	path := os.Args[1]
 
 	info, err := os.Stat(path)
@@ -70,19 +78,25 @@ func main() {
 		fmt.Println("Processing:", file)
 
 		err := parser.ReadJSON(file, func(line []byte) error {
+			totalProcessed++
 
 			doc, err := parser.Parse(line, eventType)
 			if err != nil {
+				totalParseErrors++
 				return err
 			}
 
 			doc["SourceFile"] = filepath.Base(file)
 
-			err = client.Index("triage", doc)
+			index := "triage-" + eventType
+
+			err = client.Index(index, doc)
 			if err != nil {
+				totalErrors++
 				return err
 			}
 
+			totalIndexed++
 			return nil
 		})
 

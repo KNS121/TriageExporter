@@ -1,18 +1,38 @@
-package parser
+/*package parser
 
-import (
-	"encoding/json"
-)
+type Transformation struct {
+	Field     string
+	KeyName   string
+	ValueName string
+}
 
-func Parse(line []byte, eventType string) (map[string]interface{}, error) {
+var Transformations = map[string][]Transformation{
+	"dlllist": {
+		{Field: "DLLList", KeyName: "path", ValueName: "status"},
+	},
+}
 
-	var doc map[string]interface{}
-
-	if err := json.Unmarshal(line, &doc); err != nil {
-		return nil, err
+func ApplyTransformations(doc map[string]interface{}, eventType string) {
+	transforms, ok := Transformations[eventType]
+	if !ok {
+		return
 	}
 
-	doc["EventType"] = eventType
-
-	return doc, nil
+	for _, t := range transforms {
+		if obj, ok := doc[t.Field].(map[string]interface{}); ok {
+			doc[t.Field] = convertObjectToArray(obj, t.KeyName, t.ValueName)
+		}
+	}
 }
+
+func convertObjectToArray(obj map[string]interface{}, keyName, valueName string) []map[string]interface{} {
+	result := make([]map[string]interface{}, 0, len(obj))
+	for k, v := range obj {
+		result = append(result, map[string]interface{}{
+			keyName:   k,
+			valueName: v,
+		})
+	}
+	return result
+}
+*/
