@@ -1,3 +1,3 @@
 Author
-@Nikolay Komarov
+@Nikolay K
 
