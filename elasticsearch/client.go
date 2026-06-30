@@ -11,8 +11,7 @@ import (
 
 type Client struct {
 	BaseURL string
-
-	Client *http.Client
+	Client  *http.Client
 }
 
 func New(baseURL string) *Client {
@@ -25,7 +24,6 @@ func New(baseURL string) *Client {
 }
 
 func (c *Client) Index(index string, doc map[string]interface{}) error {
-
 	body, err := json.Marshal(doc)
 	if err != nil {
 		return err
@@ -44,10 +42,6 @@ func (c *Client) Index(index string, doc map[string]interface{}) error {
 
 	req.Header.Set("Content-Type", "application/json")
 
-	//if c.Username != "" {
-	//	req.SetBasicAuth(c.Username, c.Password)
-	//}
-
 	resp, err := c.Client.Do(req)
 	if err != nil {
 		return err
@@ -55,9 +49,7 @@ func (c *Client) Index(index string, doc map[string]interface{}) error {
 	defer resp.Body.Close()
 
 	if resp.StatusCode >= 300 {
-
 		data, _ := io.ReadAll(resp.Body)
-
 		return fmt.Errorf(
 			"elasticsearch returned %d: %s",
 			resp.StatusCode,
